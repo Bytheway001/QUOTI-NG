@@ -75,7 +75,7 @@ jobs:
       - run: yarn build
       - run:
           name: Deploy public folder to YOURDOMAIN
-          command: rsync -ev "ssh -o StrictHostKeyChecking=no" -avz --delete --exclude ".htaccess" /home/circleci/repo/build/ $SSH_USER@$SSH_HOST:/home/megabrokers/public_html/quotiapp/ui
+          command: rsync -e -v "ssh -o StrictHostKeyChecking=no" -avz --delete --exclude ".htaccess" /home/circleci/repo/build/ $SSH_USER@$SSH_HOST:/home/megabrokers/public_html/quotiapp/ui
 workflows:
   version: 2
   build_for_bolivia:
