@@ -16,7 +16,7 @@ export const store = createStore(rootReducer,composeWithDevTools(applyMiddleware
 let token = getToken();
 let session =getSession();
 if(token && session){
-  store.dispatch({type:"SET_CURRENT_USER",payload:jwt.decode(token).data})
+  store.dispatch({type:"SET_CURRENT_USER",payload:jwt.decode(token)})
 }
 setInterceptors(getToken(),getSession());
 
