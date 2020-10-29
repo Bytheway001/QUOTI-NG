@@ -1,6 +1,6 @@
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import React from 'react';
-import { Button, Col, FormGroup, FormLabel, Row } from 'react-bootstrap';
+import { Col, FormGroup, FormLabel, Row } from 'react-bootstrap';
 import { Typeahead } from 'react-bootstrap-typeahead';
 import { ComparePDF } from '../../pdf/Compare';
 
@@ -11,7 +11,7 @@ interface ISidebarProps {
 	setters: any;
 	selectedPlans: any;
 }
-export const Sidebar: React.FC<ISidebarProps> = ({ plans, getCompare, setters, getters, selectedPlans }) => {
+export const Sidebar: React.FC<ISidebarProps> = ({ plans, setters, getters, selectedPlans }) => {
 	var options = Array.from(new Set(plans.map((x: any) => x.name)));
 
 	return (
@@ -44,7 +44,7 @@ export const Sidebar: React.FC<ISidebarProps> = ({ plans, getCompare, setters, g
 				{selectedPlans && (
 					<Col xs={12}>
 						<PDFDownloadLink className="btn btn-primary btn-block btn-sm" document={<ComparePDF selectedPlans={selectedPlans} />} fileName="comparativo.pdf">
-							{({ blob, url, loading, error }) => (loading ? 'Cargando...' : 'Descargar (PDF)')}
+							{({ loading }) => (loading ? 'Cargando...' : 'Descargar (PDF)')}
 						</PDFDownloadLink>
 					</Col>
 				)}

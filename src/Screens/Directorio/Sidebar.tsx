@@ -1,7 +1,6 @@
 import React from 'react';
-import { Col, FormControl, FormGroup, FormLabel, Row } from 'react-bootstrap';
+import { Col, FormGroup, FormLabel, Row } from 'react-bootstrap';
 import { Select } from '../../Controls/Select';
-import { fakeData } from '../../fakeData';
 import { ICloudFile } from '../../types/directorio';
 
 export const Sidebar: React.FC<{filters:{company:string,category:string,year:string},files:Array<ICloudFile>,setFilter:Function}> = ({files,setFilter,filters}) => {

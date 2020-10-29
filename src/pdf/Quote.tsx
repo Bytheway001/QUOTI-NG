@@ -5,7 +5,7 @@ import { formatMoney } from '../utils/formatMoney';
 import { CalculatePrima } from '../Screens/Cotizador/components/Comparativo';
 import { Col, Row, styles,lightBlue,darkBlue } from './components/Grid';
 import { PlanCell } from './components/PlanCell';
-import { IComparePlan, IPlan } from '../types/store';
+import { IComparePlan } from '../types/store';
 
 
 
@@ -16,7 +16,7 @@ interface IProps {
 }
 export const QuotePDF: React.FC<IProps> = ({ plans, params }) => {
 	Font.registerHyphenationCallback((words) => {
-		return [words];
+		return [words]; 
 	});
 
 	return (
@@ -42,7 +42,7 @@ export const QuotePDF: React.FC<IProps> = ({ plans, params }) => {
 						<Col>
 							<Text style={{ fontSize: 12, textAlign: 'center', color: 'white' }}>Deducible Seleccionado</Text>
 						</Col>
-						{plans.map((plan, key: number) => (
+						{plans.map((plan) => (
 							<Col>
 								<View style={{ color: 'white' }}>
 									<Text style={{ fontSize: 12, textAlign: 'center' }}>{formatMoney(plan.deductible)}</Text>
@@ -54,7 +54,7 @@ export const QuotePDF: React.FC<IProps> = ({ plans, params }) => {
 						<Col>
 							<Text style={{ fontSize: 12, textAlign: 'center' }}>Beneficiario 1: {params.main_age} Años</Text>
 						</Col>
-						{plans.map((plan, key: number) => {
+						{plans.map((plan) => {
 							let rate = plan.rates.find((x) => x.deductible === plan.deductible);
 							return (
 								<Col>
@@ -105,7 +105,7 @@ export const QuotePDF: React.FC<IProps> = ({ plans, params }) => {
 						<Col>
 							<Text style={{ fontSize: 12, textAlign: 'center' }}>Costo Administrativo</Text>
 						</Col>
-						{plans.map((plan, key: number) => {
+						{plans.map((plan) => {
 							let rider = plan.riders['Costo Administrativo' as any];
 							let text: string = 'No disponible';
 							if (rider.avaliable.includes(plan.deductible)) {
@@ -127,7 +127,7 @@ export const QuotePDF: React.FC<IProps> = ({ plans, params }) => {
 						<Col>
 							<Text style={{ fontSize: 12, textAlign: 'center' }}>Complicaciones de Maternidad</Text>
 						</Col>
-						{plans.map((plan,key: number) => {
+						{plans.map((plan) => {
 							let rider = plan.riders['Complicaciones de Maternidad' as any];
 							let text: string = 'No disponible';
 							if (rider.avaliable.includes(plan.deductible)) {
@@ -149,7 +149,7 @@ export const QuotePDF: React.FC<IProps> = ({ plans, params }) => {
 						<Col>
 							<Text style={{ fontSize: 12, textAlign: 'center' }}>Transplante de Organos</Text>
 						</Col>
-						{plans.map((plan, key: number) => {
+						{plans.map((plan) => {
 							let rider = plan.riders['Transplante de Órganos' as any];
 							let text: string = 'No disponible';
 							if (rider.avaliable.includes(plan.deductible)) {
@@ -172,7 +172,7 @@ export const QuotePDF: React.FC<IProps> = ({ plans, params }) => {
 						<Col>
 							<Text style={{ textAlign: 'center' }}>Prima Total Anual</Text>
 						</Col>
-						{plans.map((plan, key: number) => (
+						{plans.map((plan) => (
 							<Col>
 								<Text style={{ textAlign: 'center' }}>{formatMoney(CalculatePrima(plan,params))}</Text>
 							</Col>

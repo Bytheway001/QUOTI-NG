@@ -3,7 +3,6 @@ import { Button, Card, Col, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addToCompare, cleanData, getQuote, removeFromCompare } from '../../ducks/quoteReducer';
 import { SideBarScreen } from '../../Layouts/SideBarScreen';
-import {  QuoteProps } from '../../types/cotizador';
 import { IQuote } from '../../types/store';
 import PlanCard from './components/PlanCard';
 import Sidebar from './components/Sidebar';

@@ -1,8 +1,8 @@
-import { faFileExcel, faFilePdf, faFileWord, faSave } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useEffect } from 'react';
-import { Card, Col, Row, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { getFiles, setFilter } from '../../ducks/cloudReducer';
 import { SideBarScreen } from '../../Layouts/SideBarScreen';
@@ -38,7 +38,7 @@ const CloudScreen: React.FC<{ files: Array<ICloudFile>;setFilter:Function, getFi
 							<th>Descargar</th>
 						</tr>
 					</thead>
-					{filteredFiles.map((file: ICloudFile, key: number) => {
+					{filteredFiles.map((file: ICloudFile) => {
 						return (
 							<tr>
 								<th>{file.file_desc}</th>

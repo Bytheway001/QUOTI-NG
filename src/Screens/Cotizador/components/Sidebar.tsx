@@ -1,10 +1,6 @@
-import React, { FormEvent, useEffect, useState } from 'react';
-import { Col, Form, FormGroup, FormLabel, Row } from 'react-bootstrap';
-import RangeSlider from 'react-bootstrap-range-slider';
+import React, {  } from 'react';
+import { Col, Row } from 'react-bootstrap';
 import { RoundButton } from '../../../Controls/Buttons';
-import { RoundInput } from '../../../Controls/Input';
-import { Select } from '../../../Controls/Select';
-import { fakeData } from '../../../fakeData';
 import { IQuote } from '../../../types/store';
 import { AddedPlanList } from './AddedPlanList';
 import Comparativo from './Comparativo';
