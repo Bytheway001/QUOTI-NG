@@ -10,8 +10,9 @@ import { Logo } from './Logo';
 
 interface IBarProps {
 	logout: Function;
+	email:string
 }
-const Bar: React.FC<IBarProps> = ({ logout }) => (
+const Bar: React.FC<IBarProps> = ({ logout,email }) => (
 	<Navbar expand="lg" id="navbar">
 		<Navbar.Brand href="/">
 			<Logo type="full" size="sm" />
@@ -43,7 +44,7 @@ const Bar: React.FC<IBarProps> = ({ logout }) => (
 					Directorio
 				</Nav.Link>
 				{getToken() ? (
-					<NavDropdown title="luxrafacm@gmail.com" id="nav-dropdown">
+					<NavDropdown title={email??""} id="nav-dropdown">
 						<NavDropdown.Item style={{ padding: 5, paddingRight: 20, textAlign: 'right' }} as={Link} to="/stats" eventKey="1">
 							Mis Cotizaciones
 						</NavDropdown.Item>
@@ -62,11 +63,13 @@ const Bar: React.FC<IBarProps> = ({ logout }) => (
 		</Navbar.Collapse>
 	</Navbar>
 );
-
+const mapStateToProps = (state:any)=>{
+	return ({email:state.auth.user?.email??""})
+}
 const mapDispatchToProps = (dispatch: any) => {
 	return {
 		logout: () => dispatch(logout()),
 	};
 };
 
-export default connect(null, mapDispatchToProps)(Bar);
+export default connect(mapStateToProps, mapDispatchToProps)(Bar);

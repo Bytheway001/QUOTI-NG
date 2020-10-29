@@ -2,6 +2,7 @@ import React, { FormEvent } from 'react';
 import { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { RoundButton } from '../../Controls/Buttons';
 import { RoundInput } from '../../Controls/Input';
 import { login } from '../../ducks/authReducer';
@@ -27,15 +28,17 @@ const LoginScreen: React.FC<{login:Function}> = ({login}) => {
 						<Form onSubmit={handleSubmit}>
 							<Form.Group>
 								<label>Correo Electronico:</label>
-								<RoundInput type='email' value={email} onChange={({ target }) => setEmail(target.value)} />
+								<RoundInput size='sm' type='email' value={email} onChange={({ target }) => setEmail(target.value)} />
 							</Form.Group>
 							<Form.Group>
 								<label>Contraseña:</label>
-								<RoundInput value={password} type='password' onChange={({ target }) => setPassword(target.value)} />
+								<RoundInput size='sm' value={password} type='password' onChange={({ target }) => setPassword(target.value)} />
 							</Form.Group>
 							<Form.Group>
 								<RoundButton block type='submit'>Ingresar</RoundButton>
+								
 							</Form.Group>
+							<Link className='d-block text-center' to='/lostpassword'>Olvido su contraseña?</Link>
 						</Form>
 					</Col>
 				</div>

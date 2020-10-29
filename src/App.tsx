@@ -14,6 +14,8 @@ import Comparador from './Screens/Comparador/Screen';
 import { connect } from 'react-redux';
 import  CloudScreen  from './Screens/Directorio/Screen';
 import { StatsScreen } from './Screens/Agent/Stats';
+import { LostPassword } from './Screens/Login/LostPassword';
+import { NewPassword } from './Screens/Login/NewPassword';
 
 const App: React.FC<{ isAuthenticated: Boolean }> = ({ isAuthenticated }) => {
 	return (
@@ -26,6 +28,8 @@ const App: React.FC<{ isAuthenticated: Boolean }> = ({ isAuthenticated }) => {
 				<PrivateRoute exact path="/stats" component={StatsScreen} />
 				<Route exact path="/test" component={Test} />
 				<LoggedOutRoute exact path="/login" component={LoginScreen} />
+				<LoggedOutRoute exact path="/lostpassword" component={LostPassword} />
+				<LoggedOutRoute exact path="/newpassword" component={NewPassword} />
 			</Switch>
 		</BasicLayout>
 	);
