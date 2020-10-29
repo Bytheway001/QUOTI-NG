@@ -1,0 +1,57 @@
+$md: 992px;
+/* deHasta */
+@import 'variables';
+@media screen and(max-width:$md) {
+
+	.basic-layout {
+		#navbar {
+			.navbar-brand {
+                width: 50px;
+                padding:0;
+				img {
+                    margin:0;
+					width: 100%;
+				
+				}
+			}
+		}
+	}
+    .homepage{
+        align-self:center;
+        padding-top:15vh;
+        padding-bottom:15vh;
+        flex-direction: row;
+        justify-content:space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .sidebarView{
+        height:auto;
+        flex-direction: column;
+
+        .sidebar{
+           
+            width:100%;
+            height:auto;
+              
+        }
+        .sidebarView-content{
+            padding:10px;
+            width:100%;
+        }
+    }
+    .with-buttons{
+        button{
+            background:$medium-blue;
+            border:none;
+            border-radius:0px;
+          
+            border:gray 1px solid;
+        }
+    }
+
+    .benefits-table{
+        font-size:0.7em;
+    }
+
+}
