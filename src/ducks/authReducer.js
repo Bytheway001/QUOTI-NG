@@ -14,7 +14,7 @@ export const login = (email,password)=>{
            console.log(sessiontoken)
            setToken(jsontoken,sessiontoken);
            setInterceptors(jsontoken,sessiontoken);
-           dispatch({type:SET_CURRENT_USER,payload:jwt.decode(jsontoken).data})
+           dispatch({type:SET_CURRENT_USER,payload:jwt.decode(jsontoken)})
         })
    }
 }
@@ -37,7 +37,7 @@ export const authReducer = (state=initialState,{type,payload})=>{
             return{
                 ...state,
                 isAuthenticated:Object.keys(payload).length>0,
-                user:payload
+                user:payload.data
             }
         default:
             return state
