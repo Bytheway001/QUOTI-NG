@@ -37,7 +37,7 @@ export const Sidebar: React.FC<ISidebarProps> = ({ plans, getCompare, setters, g
 					Plan 3
 				</FormLabel>
 				<Col xs={9}>
-					<Typeahead selected={getters.p3} onChange={(data) => setters.setPlan3(data)} id="plan3" options={options} labelKey="name" />
+					<Typeahead selected={getters.p3	} onChange={(data) => setters.setPlan3(data)} id="plan3" options={options} labelKey="name" />
 				</Col>
 			</FormGroup>
 			<Row className="mt-5">
