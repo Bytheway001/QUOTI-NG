@@ -56,7 +56,7 @@ const Comparativo: React.FC<IProps> = ({ compare, params }) => {
 	const [show, setShow] = useState(false);
 	const [name,setName]=useState("");
 	const justSave = (name:string)=>{
-		Axios.post(APIURL + '/mailer', { compare, params,name })
+		Axios.post(APIURL + '/exportAsExcel?save=1', { compare, params,name })
 			.then((res) => {
 				alert("Cotizacion guardada con exito");
 			})
@@ -65,7 +65,7 @@ const Comparativo: React.FC<IProps> = ({ compare, params }) => {
 			});
 	}
 	const exportExcel = () => {
-		Axios.post(APIURL + '/mailer', { compare, params })
+		Axios.post(APIURL + '/exportAsExcel', { compare, params })
 			.then((res) => {
 				downloadXls(res.data.data);
 			})

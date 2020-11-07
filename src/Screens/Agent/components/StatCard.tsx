@@ -10,10 +10,25 @@ import { Button, ButtonGroup, Card, Table } from "react-bootstrap";
 import { QuotePDF } from "../../../pdf/Quote";
 import { IQuoteStat } from "../../../types/store";
 import { formatMoney } from "../../../utils/formatMoney";
+import { downloadXls } from "../../../utils/utils";
+import Axios from 'axios';
+import { APIURL } from "../../../ducks/quoteReducer";
 interface IProps {
   stat: IQuoteStat;
 }
+
+
 export const StatCard: React.FC<IProps> = ({ stat }) => {
+  const redownloadQuote=()=>{
+    Axios.post(APIURL + '/redownloadQuote', { plans:stat.quote.plans, params:stat.quote.params })
+			.then((res) => {
+				downloadXls(res.data.data,stat.name);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+  }
+
   return (
     <Card className="h-100">
       <Card.Header className="d-flex flex-row justify-content-between align-items-center">
@@ -39,7 +54,7 @@ export const StatCard: React.FC<IProps> = ({ stat }) => {
               )
             }
           </PDFDownloadLink>
-          <Button variant="link">
+          <Button variant="link" onClick={()=>redownloadQuote()}>
             <FontAwesomeIcon
               icon={faFileExcel}
               title="Descargar (Excel)"

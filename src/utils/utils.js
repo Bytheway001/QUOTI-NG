@@ -82,7 +82,7 @@ function base64ToArrayBuffer(data) {
 }
 
 
-export const downloadXls = (base64Data)=>{
+export const downloadXls = (base64Data,name=null)=>{
     var arrBuffer = base64ToArrayBuffer(base64Data);
     // It is necessary to create a new blob object with mime-type explicitly set
     // otherwise only Chrome works like it should
@@ -101,7 +101,7 @@ export const downloadXls = (base64Data)=>{
     var link = document.createElement("a");
     document.body.appendChild(link); //required in FF, optional for Chrome
     link.href = data;
-    link.download = "file.xlsx";
+    link.download = name?name+'.xlsx':"Cotizacion.xlsx";
     link.click();
     window.URL.revokeObjectURL(data);
     link.remove();
