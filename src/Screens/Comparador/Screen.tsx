@@ -77,9 +77,8 @@ const Comparador: React.FC<IProps> = ({ plans, getPlans, getCompare, selectedPla
 															{selectedPlans[categoryName][benefitName].map((benefit: string, i: number) => {
 																return (
 																	<td>
-																		{benefit.split('\\').map((s: string, k: number) => {
-																			return <p>{s}</p>;
-																		})}
+																		<p style={{whiteSpace:'pre-line'}}>{benefit}</p>
+																		
 																	</td>
 																);
 															})}
