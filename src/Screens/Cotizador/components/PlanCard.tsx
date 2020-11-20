@@ -8,6 +8,7 @@ import {
   FormLabel,
   Image,
   Row,
+  Table,
 } from "react-bootstrap";
 import { connect } from "react-redux";
 import { formatMoney } from "../../../utils/formatMoney";
@@ -53,10 +54,10 @@ const PlanCard: React.FC<IProps> = ({ data, name, addToCompare }) => {
       setPlan({ ...plan });
     }
   };
-  const calculateTotal = () => {
+  const calculateTotal = (rateType:string='yearly') => {
     let total = 0;
     if (rate) {
-      total = rate.yearly;
+      total = rateType==='yearly'?rate.yearly:rate.biyearly;
       if (rate.couple) {
         total = total + rate.couple;
       }
@@ -146,11 +147,19 @@ const PlanCard: React.FC<IProps> = ({ data, name, addToCompare }) => {
         </div>
       </Card.Body>
       <Card.Footer>
-        <p>Prima Total: {rate && calculateTotal()}</p>
-
-        <Button variant="secondary" size="sm">
-          Ver Desglose
-        </Button>
+        <Table size="sm">
+         
+          <tbody>
+            <tr>
+              <th>Semestral</th>
+              <th>Anual</th>
+            </tr>
+            <tr>
+              <th>{rate && calculateTotal('biyearly')}</th>
+              <th>{rate && calculateTotal('yearly')}</th>
+            </tr>
+          </tbody>
+        </Table>
       </Card.Footer>
     </Card>
   );

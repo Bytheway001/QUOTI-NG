@@ -32,10 +32,10 @@ export function groupBy(arr,property){
         let newRate={
             deductible_out:obj.deductible_out,
             deductible:obj.deductible,
+            biyearly:obj.biyearly_price,
             yearly:obj.yearly_price,
             couple:obj.couple_price,
             kids:obj.kids_price,
-            
         }
 
         let r=obj.endosos.reduce((prev,endoso)=>{
