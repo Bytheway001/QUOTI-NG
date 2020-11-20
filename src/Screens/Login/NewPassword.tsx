@@ -3,24 +3,25 @@ import { Row, Col, Form, Alert } from "react-bootstrap";
 import { RoundButton } from "../../Controls/Buttons";
 import { RoundInput } from "../../Controls/Input";
 import { Logo } from "../../Layouts/Logo";
-import Axios from 'axios';
+import Axios from "axios";
 import { APIURL } from "../../ducks/quoteReducer";
 import { RouteComponentProps } from "react-router-dom";
-import queryString from 'query-string';
-export const NewPassword: React.FC<RouteComponentProps> = ({location}) => {
-const email = queryString.parse(location.search).e;
+import queryString from "query-string";
+export const NewPassword: React.FC<RouteComponentProps> = ({ location }) => {
+  const email = queryString.parse(location.search).uid;
   const [password, setPassword] = useState("");
-  const [password_confirmation,setPasswordConfirmation]=useState("");
-  const [message,setMessage]=useState("");
-  const handleSubmit = (e:FormEvent) => {
-      e.preventDefault();
-    if(password===password_confirmation){
-        Axios.post(APIURL+'/change_password',{email,password}).then(res=>{
-            window.location.href='/'
-            
-        })
-    }else{
-        setMessage('Las claves no coinciden')
+  const [password_confirmation, setPasswordConfirmation] = useState("");
+  const [message, setMessage] = useState("");
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    if (password === password_confirmation) {
+      Axios.post(APIURL + "/change_password", { email, password }).then(
+        (res) => {
+          window.location.href = "/";
+        }
+      );
+    } else {
+      setMessage("Las claves no coinciden");
     }
   };
   return (
@@ -42,7 +43,6 @@ const email = queryString.parse(location.search).e;
           <Col sm={12}>
             <Form onSubmit={handleSubmit}>
               <Form.Group>
-                
                 <label>Nueva Contraseña:</label>
                 <RoundInput
                   size="sm"
@@ -57,13 +57,21 @@ const email = queryString.parse(location.search).e;
                   size="sm"
                   type="text"
                   value={password_confirmation}
-                  onChange={({ target }) => setPasswordConfirmation(target.value)}
+                  onChange={({ target }) =>
+                    setPasswordConfirmation(target.value)
+                  }
                 />
               </Form.Group>
 
               <Form.Group>
-                <RoundButton block type="submit">Recuperar mi Contraseña</RoundButton>
-                {message && <Alert className='mt-5' variant='danger'>{message}</Alert>}
+                <RoundButton block type="submit">
+                  Recuperar mi Contraseña
+                </RoundButton>
+                {message && (
+                  <Alert className="mt-5" variant="danger">
+                    {message}
+                  </Alert>
+                )}
               </Form.Group>
             </Form>
           </Col>

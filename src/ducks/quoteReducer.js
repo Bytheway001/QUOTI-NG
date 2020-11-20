@@ -17,12 +17,12 @@ export function getQuote(data){
         dispatch({type:QUOTE_REQUESTED});
         dispatch({type:LOADER_ON});
         Axios.post(APIURL+'/get_quote_comparison',data).then(res=>{
-            console.log(res.data)
+            
             dispatch({type:QUOTE_SUCCEEDED,payload:res.data})
             dispatch({type:LOADER_OFF});
         })
         .catch(err=>{
-            console.log(err);
+           
             dispatch({type:QUOTE_FAILED,payload:err.response});
             dispatch({type:LOADER_OFF});
         })

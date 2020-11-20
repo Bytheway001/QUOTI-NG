@@ -259,9 +259,17 @@ p {
 		}
 	}
 	.card-footer {
+		.table{
+			tr,td,th{
+				border:none
+			}
+			font-size:0.8em;
+			border:none!important;
+			color: yellow;
+		}
 		background-color: $dark-blue;
 		text-align: center;
-		color: yellow;
+		padding:5px;
 		font-weight: bold;
 		font-size: 1.1em;
 		border-bottom-right-radius: 20px;
@@ -447,9 +455,7 @@ p {
 }
 .benefits-table {
 	font-size:0.9em;
-	tr{
-		
-	}
+	
 	td{
 		text-align: justify;
 		

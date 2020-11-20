@@ -35,6 +35,7 @@ export interface IRate {
 	yearly: number;
 	couple: number;
 	kids: number;
+	biyearly:number;
 }
 
 export interface IRider {
