@@ -43,7 +43,7 @@ export const Sidebar: React.FC<ISidebarProps> = ({ plans, setters, getters, sele
 			<Row className="mt-5">
 				{selectedPlans && (
 					<Col xs={12}>
-						<PDFDownloadLink className="btn btn-primary btn-block btn-sm" document={<ComparePDF selectedPlans={selectedPlans} />} fileName="comparativo.pdf">
+						<PDFDownloadLink className="btn btn-primary btn-block btn-sm" document={<ComparePDF names={getters} selectedPlans={selectedPlans} />} fileName="comparativo.pdf">
 							{({ loading }) => (loading ? 'Cargando...' : 'Descargar (PDF)')}
 						</PDFDownloadLink>
 					</Col>
