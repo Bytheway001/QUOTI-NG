@@ -93,7 +93,7 @@ const QuoteForm: React.FC<IProps> = ({getQuote,params}) => {
                         {new Array(num_kids).fill(0).map((kid, key) => {
                             return (
                                 <Col key={key} xs={2}>
-                                    <RoundInput onChange={({ target }) => handleKidAgeChange(key, target.value)} value={kids_ages[key]} type="number" size="sm" min={1} max={18} className="text-center" />
+                                    <RoundInput onChange={({ target }) => handleKidAgeChange(key, target.value)} value={kids_ages[key]} type="number" size="sm" min={1} max={24} className="text-center" />
                                 </Col>
                             );
                         })}
